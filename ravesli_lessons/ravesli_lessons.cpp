@@ -1,36 +1,28 @@
 ﻿#include <iostream>
 
-class Ball
+class RGBA
 {
-	std::string m_color;
-	double m_radius;
+private:
+	int m_red;
+	int m_green;
+	int m_blue;
+	int m_alpha;
 
 public:
-	Ball(double radius) {
-		m_color = "red";
-		m_radius = radius;
-	}
-	Ball(const std::string& color = "red", double radius = 20.0) {
-		m_color = color;
-		m_radius = radius;
+	RGBA(int red = 0, int green = 0, int blue = 0, int alpha = 255)
+		: m_red{ red }, m_green{ green }, m_blue{ blue }, m_alpha{ alpha }
+	{
+
 	}
 	void print() {
-		std::cout << "color: " << m_color << ", radius: " << m_radius << "\n";
+		std::cout << "r=" << m_red << " g=" << m_green << " b=" << m_blue << " a=" << m_alpha << "\n";
 	}
 };
+
 int main()
 {
-	Ball def;
-	def.print();
-
-	Ball black("black");
-	black.print();
-
-	Ball thirty(30.0);
-	thirty.print();
-
-	Ball blackThirty("black", 30.0);
-	blackThirty.print();
+	RGBA color(0, 135, 135);
+	color.print();
 
 	return 0;
 }
