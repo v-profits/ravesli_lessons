@@ -1,50 +1,45 @@
 ﻿#include <iostream>
-#include <cassert>
 
-class Stack {
-    int array[10];
-    int lenght;
+class Ball
+{
+	std::string m_color;
+	double m_radius;
 
 public:
-    void reset() {
-        lenght = 0;
-        for (int i = 0; i < 10; ++i)
-            array[i] = 0;
-    }
-    void print() {
-        std::cout << "( ";
-        for (int j = 0; j < lenght; ++j)
-            std::cout << array[j] << " ";
-        std::cout << ")\n";
-    }
-    void push(const int value) {
-        array[lenght] = value;
-        ++lenght;
-    }
-    void pop() {
-        assert(lenght != 0 && " В стеке нет значений");
-        array[lenght - 1] = 0;
-        --lenght;
-    }
+	Ball() {
+		m_color = "red";
+		m_radius = 20.0;
+	}
+	Ball(const std::string& color) {
+		m_color = color;
+		m_radius = 20.0;
+	}
+	Ball(double radius) {
+		m_color = "red";
+		m_radius = radius;
+	}
+	Ball(const std::string& color, double radius) {
+		m_color = color;
+		m_radius = radius;
+	}
+	void print() {
+		std::cout << "color: " << m_color << ", radius: " << m_radius << "\n";
+	}
 };
 
 int main()
 {
-    Stack stack;
-    stack.reset();
-    stack.print();
+	Ball def;
+	def.print();
 
-    stack.push(3);
-    stack.push(7);
-    stack.push(5);
-    stack.print();
+	Ball black("black");
+	black.print();
 
-    stack.pop();
-    stack.print();
+	Ball thirty(30.0);
+	thirty.print();
 
-    stack.pop();
-    stack.pop();
-    stack.print();
+	Ball blackThirty("black", 30.0);
+	blackThirty.print();
 
-    return 0;
+	return 0;
 }
