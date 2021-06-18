@@ -1,21 +1,24 @@
 ﻿#include <iostream>
+#include <cstdint> // для std::uint8
 
 class RGBA
 {
 private:
-	int m_red;
-	int m_green;
-	int m_blue;
-	int m_alpha;
-
+	std::uint8_t m_red;
+	std::uint8_t m_green;
+	std::uint8_t m_blue;
+	std::uint8_t m_alpha;
 public:
-	RGBA(int red = 0, int green = 0, int blue = 0, int alpha = 255)
+	RGBA(std::uint8_t red = 0, std::uint8_t green = 0, std::uint8_t blue = 0, std::uint8_t alpha = 255)
 		: m_red{ red }, m_green{ green }, m_blue{ blue }, m_alpha{ alpha }
 	{
 
 	}
 	void print() {
-		std::cout << "r=" << m_red << " g=" << m_green << " b=" << m_blue << " a=" << m_alpha << "\n";
+		//std::cout << "r=" << (int)m_red << " g=" << (int)m_green << " b=" << (int)m_blue << " a=" << (int)m_alpha << "\n";
+
+		std::cout << "r=" << static_cast<int>(m_red) << " g=" << static_cast<int>(m_green) <<
+			" b=" << static_cast<int>(m_blue) << " a=" << static_cast<int>(m_alpha) << "\n";
 	}
 };
 
@@ -23,6 +26,5 @@ int main()
 {
 	RGBA color(0, 135, 135);
 	color.print();
-
 	return 0;
 }
