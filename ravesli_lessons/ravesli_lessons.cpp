@@ -6,19 +6,11 @@ class Ball
 	double m_radius;
 
 public:
-	Ball() {
-		m_color = "red";
-		m_radius = 20.0;
-	}
-	Ball(const std::string& color) {
-		m_color = color;
-		m_radius = 20.0;
-	}
 	Ball(double radius) {
 		m_color = "red";
 		m_radius = radius;
 	}
-	Ball(const std::string& color, double radius) {
+	Ball(const std::string& color = "red", double radius = 20.0) {
 		m_color = color;
 		m_radius = radius;
 	}
@@ -26,7 +18,6 @@ public:
 		std::cout << "color: " << m_color << ", radius: " << m_radius << "\n";
 	}
 };
-
 int main()
 {
 	Ball def;
