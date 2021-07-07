@@ -1,10 +1,9 @@
 #include <iostream>
 
- bool isEven()
+ int isEven()
 {
-	std::cout << "¬ведите целое число: ";
 	int x;
 	std::cin >> x;
 
-	return x % 2 == 0;
+	return x;
 }

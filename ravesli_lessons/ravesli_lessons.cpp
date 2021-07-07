@@ -1,13 +1,25 @@
 ﻿#include <iostream>
 
-bool isEven();
+int isEven();
 
 int main()
 {
     setlocale(0, "");
+
+    std::cout << "Введите целое число: ";
+    int a = isEven();
     
-    if (isEven()) std::cout << "Число четное";
-    else std::cout << "Число не четное";
+    std::cout << "Введите большее целое число: ";
+    int b = isEven();
+
+    if (a > b) {
+        std::cout << "Меняем значения местами" << std::endl;
+        int c = a;
+        a = b;
+        b = c;
+    }
+    std::cout << "Меньшее число: " << a << std::endl;
+    std::cout << "Большее число: " << b;
 
     return 0;
 }
