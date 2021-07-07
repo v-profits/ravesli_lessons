@@ -2,5 +2,8 @@
 
  int isEven()
 {
-	return 0;
+	int x;
+	std::cin >> x;
+
+	return x;
 }
