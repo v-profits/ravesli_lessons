@@ -2,8 +2,9 @@
 
 int getInteger()
 {
-	std::cout << "Enter an integer: ";
+	std::cout << "¬ведите целое число: ";
 	int x;
 	std::cin >> x;
+
 	return x;
 }
