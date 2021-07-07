@@ -1,21 +1,13 @@
 ﻿#include <iostream>
 
-int getInteger();
+bool isEven();
 
 int main()
 {
     setlocale(0, "");
-    int x = getInteger();
- 
-    for (int i = 2; i < x; ++i) {
-        if (x % i == 0) {
-            std::cout << "Число не простое";
-            break;
-        }
-        if (x == i + 1) {
-            std::cout << "Число простое";
-        }
-    }
- 
+    
+    if (isEven()) std::cout << "Число четное";
+    else std::cout << "Число не четное";
+
     return 0;
 }
