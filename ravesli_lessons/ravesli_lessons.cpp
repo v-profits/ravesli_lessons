@@ -1,16 +1,9 @@
 ﻿#include <iostream>
 
-enum Monster {
-    OGRE,
-    GOBLIN,
-    SKELETON,
-    ORC,
-    TROLL
-};
-
 int main()
 {
-    Monster ogre = OGRE;
+    typedef int status_t;
+    status_t isEven();
 
     return 0;
 }
