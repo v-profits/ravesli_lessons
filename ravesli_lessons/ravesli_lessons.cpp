@@ -1,29 +1,33 @@
 ﻿#include <iostream>
 
-struct Advertising {
-    int numberAds;
-    double percentagesClicks;
-    double moneyPerClick;
+struct Дробь {
+    double числитель;
+    double знаменатель;
 };
+
+void multiply(Дробь d1, Дробь d2) {
+    std::cout << "умножение: " << d1.числитель/d1.знаменатель << " * " << d2.числитель/d2.знаменатель << " = " << d1.числитель / d1.знаменатель * d2.числитель / d2.знаменатель << std::endl;
+}
 
 int main()
 {
     setlocale(0, "");
 
-    std::cout << "сколько объявлений вы показали посетителям: ";
-    Advertising i;
-    std::cin >> i.numberAds;
+    Дробь дробь1;
+    std::cout << "числитель: ";
+    std::cin >> дробь1.числитель;
+    std::cout << "знаменатель: ";
+    std::cin >> дробь1.знаменатель;
+    std::cout << "дробь1: " << дробь1.числитель << " / " << дробь1.знаменатель << " = " << дробь1.числитель / дробь1.знаменатель << std::endl;
 
-    std::cout << "сколько процентов посетителей нажали на объявления: ";
-    Advertising d;
-    std::cin >> d.percentagesClicks;
+    Дробь дробь2;
+    std::cout << "числитель: ";
+    std::cin >> дробь2.числитель;
+    std::cout << "знаменатель: ";
+    std::cin >> дробь2.знаменатель;
+    std::cout << "дробь2: " << дробь2.числитель << " / " << дробь2.знаменатель << " = " << дробь2.числитель / дробь2.знаменатель << std::endl;
 
-    std::cout << "сколько вы заработали в среднем за каждое нажатие на объявления: ";
-    Advertising d2;
-    std::cin >> d2.moneyPerClick;
-
-    double s = i.numberAds * d.percentagesClicks * d2.moneyPerClick / 100;
-    std::cout << "итого: " << s;
+    multiply(дробь1, дробь2);
 
     return 0;
 }
