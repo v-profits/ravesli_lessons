@@ -2,7 +2,7 @@
 
 int main()
 {
-    typedef int status_t;
+    using status_t = int;
     status_t isEven();
 
     return 0;
