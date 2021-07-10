@@ -1,33 +1,85 @@
 ﻿#include <iostream>
 
-struct Дробь {
-    double числитель;
-    double знаменатель;
+enum class eMonsters {
+    NONE, //отсутствие монстра 
+    ORGE,
+    GOBLIN,
+    SKELETON,
+    ORC,
+    TROLL
 };
 
-void multiply(Дробь d1, Дробь d2) {
-    std::cout << "умножение: " << d1.числитель/d1.знаменатель << " * " << d2.числитель/d2.знаменатель << " = " << d1.числитель / d1.знаменатель * d2.числитель / d2.знаменатель << std::endl;
+struct sMonster {
+    enum class eMonsters type;
+    std::string name;
+    int healht;
+};
+
+void Monsters(struct sMonster& m, const enum class eMonsters e) {
+    switch (e) {
+    case eMonsters::ORGE:
+        m.type = e;
+        m.name = "шпала";
+        m.healht = 170;
+        break;
+    case eMonsters::GOBLIN:
+        m.type = e;
+        m.name = "чучело";
+        m.healht = 50;
+        break;
+    case eMonsters::SKELETON:
+        m.type = e;
+        m.name = "тощий";
+        m.healht = 200;
+        break;
+    case eMonsters::ORC:
+        m.type = e;
+        m.name = "кувалда";
+        m.healht = 100;
+        break;
+    case eMonsters::TROLL:
+        m.type = e;
+        m.name = "дылда";
+        m.healht = 150;
+        break;
+    default:
+        std::cout << "нет такого монстра";
+    }
+}
+
+const std::string printStr(const enum class eMonsters e) {
+    std::string str = "";
+    e == eMonsters::ORGE ? str = "orge" :
+        e == eMonsters::GOBLIN ? str = "goblin" :
+        e == eMonsters::SKELETON ? str = "skeleton" :
+        e == eMonsters::ORC ? str = "orc" :
+        e == eMonsters::TROLL ? str = "troll" : str = "";
+    return str;
+}
+
+void printMonster(const sMonster m) {
+    if(m.healht != 0) std::cout << "монстр " << printStr(m.type) << " - имя  " << m.name << ", осталось жизни : " << m.healht;
 }
 
 int main()
 {
     setlocale(0, "");
 
-    Дробь дробь1;
-    std::cout << "числитель: ";
-    std::cin >> дробь1.числитель;
-    std::cout << "знаменатель: ";
-    std::cin >> дробь1.знаменатель;
-    std::cout << "дробь1: " << дробь1.числитель << " / " << дробь1.знаменатель << " = " << дробь1.числитель / дробь1.знаменатель << std::endl;
+    int i;
+    std::cout << "монстр : ogre-1, goblin-2, skeleton-3, orc-4, troll-5 : ";
+    std::cin >> i;
 
-    Дробь дробь2;
-    std::cout << "числитель: ";
-    std::cin >> дробь2.числитель;
-    std::cout << "знаменатель: ";
-    std::cin >> дробь2.знаменатель;
-    std::cout << "дробь2: " << дробь2.числитель << " / " << дробь2.знаменатель << " = " << дробь2.числитель / дробь2.знаменатель << std::endl;
-
-    multiply(дробь1, дробь2);
+    eMonsters e = eMonsters::NONE;
+    if (i >= 1 && i <= 5) {
+        i == 1 ? e = eMonsters::ORGE :
+        i == 2 ? e = eMonsters::GOBLIN :
+        i == 3 ? e = eMonsters::SKELETON :
+        i == 4 ? e = eMonsters::ORC :
+                 e = eMonsters::TROLL;
+    }
+    sMonster m{ eMonsters::NONE, "", 0 };
+    Monsters(m, e); 
+    printMonster(m);
 
     return 0;
 }
