@@ -1,41 +1,58 @@
 ﻿#include <iostream>
+#include <string>
 
-std::string err = "";
-
-const int calculate(const int a, const int b, const char ch)
+enum class Animal
 {
-	switch (ch) {
-	case '+': return a + b;
-	case '-': return a - b;
-	case '*': return a * b;
-	case '/': return a / b;
-	case '%': return a % b;
-	default: err = "error"; return 0;
-	}
+    PIG,
+    CHICKEN,
+    GOAT,
+    CAT,
+    DOG,
+    OSTRICH,
+    NONE
+};
+
+std::string getAnimalName(Animal a)
+{
+    switch (a) {
+    case Animal::CHICKEN: return "chicken";
+    case Animal::OSTRICH: return "ostrich";
+    case Animal::PIG:     return "pig";
+    case Animal::GOAT:    return "goat";
+    case Animal::CAT:     return "cat";
+    case Animal::DOG:     return "dog";
+    default:              return "error";
+    }
+}
+
+std::string numberOfLegs(Animal a)
+{
+    switch (a) {
+    case Animal::CHICKEN:
+    case Animal::OSTRICH:
+        return "2";
+    case Animal::PIG:
+    case Animal::GOAT:
+    case Animal::CAT:
+    case Animal::DOG:
+        return "4";
+    default:
+        return "error";
+    }
+}
+
+void print(Animal a)
+{
+    std::cout << "A " << getAnimalName(a) << " has " << numberOfLegs(a) << " legs.\n";
 }
 
 int main()
 {
-	setlocale(0, "");
+    
 
-	int a, b, c;
-	char ch;
-	std::cout << "первое число : ";
-	std::cin >> a;
-	std::cout << "второе число : ";
-	std::cin >> b;
-	std::cout << "знак : ";
-	std::cin >> ch;
+    print(Animal::CAT);
+    print(Animal::CHICKEN);
+    print(Animal::NONE);
 
-	c = calculate(a, b, ch);
-
-	if (err != "error")
-		std::cout << "результат : " << c;
-	else {
-		std::cout << "результат : " << err;
-		err = "";
-	}
-		
-
-	return 0;
+    return 0;
 }
