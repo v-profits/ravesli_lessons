@@ -142,6 +142,9 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="ravesli_lessons.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
