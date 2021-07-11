@@ -2,24 +2,10 @@
 
 int main()
 {
-    int i = 1;
-    while (i <= 5) {
-        int k = 5;
-        while (k >= 1) {
-            if (k <= i) std::cout << k << " ";
-            else std::cout << "  ";
-            --k;
-        }
-        std::cout << "\n";
-        ++i;
-    }
-    return 0;
+	for (int i = 0; i <= 20; i += 2)
+		std::cout << i << " ";
 }
 
 /*
-        1
-      2 1
-    3 2 1
-  4 3 2 1
-5 4 3 2 1
+Напишите цикл for, который выводит каждое четное число в диапазоне от 0 до 20.
 */
