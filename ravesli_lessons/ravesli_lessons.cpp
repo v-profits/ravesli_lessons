@@ -1,56 +1,68 @@
-﻿//глава 6.1
+﻿//глава 6.2
 #include <iostream>
 
-class Igrok {
-public:
-	enum E {
-		ZDOROVE,
-		FAKEL,
-		STRELA,
-		LENGTH
-	};
-private:
-	int m_array[LENGTH];
-
-public:
-	Igrok() {
-		m_array[ZDOROVE] = 100;
-		m_array[FAKEL] = 100;
-		m_array[STRELA] = 100;
-	}
-	Igrok(int zdorove, int fakel, int strela) {
-		fun(zdorove, fakel, strela);
-	}
-	void fun(int zdorove, int fakel, int strela) {
-		m_array[ZDOROVE] = zdorove;
-		m_array[FAKEL] = fakel;
-		m_array[STRELA] = strela;
-	}
-	friend int countTotalItems(const Igrok igrok);
+struct Student {
+	std::string name;
+	int grade;
 };
 
-int countTotalItems(const Igrok igrok)
+void students(Student* arr, int sum)
 {
-	int sum = 0;
-	for (int i = 0; i < Igrok::LENGTH; ++i)
-		sum += igrok.m_array[i];
-	
-	return sum;
+	for (int i = 0; i < sum; ++i) {
+		std::cout << "имя №" << i + 1 << " : ";
+		std::cin >> arr[i].name;
+		std::cout << "оценка : ";
+		std::cin >> arr[i].grade;
+	}
 }
 
 int main()
 {
-	Igrok igrok(4, 4, 4);
-	igrok.fun(3, 6, 12);
-	std::cout << "sum : " << countTotalItems(igrok);
+	setlocale(0, "");
+	std::cout << "Сколько учеников : ";
+	int sum;
+	std::cin >> sum;
+	Student* array = new Student[sum];
+	students(array, sum);
+	
+	for (int j = 0; j < sum - 1; ++j)
+		for (int i = j + 1; i < sum; ++i)
+			if (array[j].grade < array[i].grade)
+				std::swap(array[j].grade, array[i].grade);
+	for (int i = 0; i < sum; ++i)
+		std::cout << array[i].name << " - " << array[i].grade << std::endl;
+	delete[] array;
 	return 0;
 }
-
 /*
-Представьте, что вы пишете игру, в которой игрок может иметь 3 типа предметов: зелья здоровья, факелы и стрелы. 
-Создайте перечисление с этими типами предметов и фиксированный массив для хранения количества каждого типа предметов, 
-которое имеет при себе игрок (используйте стандартные фиксированные массивы, а не std::array). 
-У вашего игрока должны быть при себе 3 зелья здоровья, 6 факелов и 12 стрел. Напишите функцию countTotalItems(), 
-которая возвращает общее количество предметов, которые есть у игрока. 
-В функции main() выведите результат работы функции countTotalItems().
+Создайте структуру, содержащую имя и оценку учащегося (по шкале от 0 до 100). 
+Спросите у пользователя, сколько учеников он хочет ввести. 
+Динамически выделите массив для хранения всех студентов. 
+Затем попросите пользователя ввести для каждого студента его имя и оценку. 
+Как только пользователь ввел все имена и оценки, отсортируйте список оценок студентов по убыванию (сначала самый высокий бал). 
+Затем выведите все имена и оценки в отсортированном виде.
+
+Для следующего ввода:
+
+Andre
+74
+Max
+85
+Anton
+12
+Josh
+17
+Sasha
+90
+
+Вывод должен быть следующим:
+
+Sasha got a grade of 90
+Max got a grade of 85
+Andre got a grade of 74
+Josh got a grade of 17
+Anton got a grade of 12
+
+Подсказка: Вы можете изменить алгоритм сортировки массива методом выбора из урока №77 для сортировки вашего динамического массива. 
+Если вы напишете сортировку массива отдельной функцией, то массив должен передаваться по адресу (как указатель).
 */
