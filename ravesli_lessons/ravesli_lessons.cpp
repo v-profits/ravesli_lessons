@@ -1,39 +1,56 @@
-﻿//91
+﻿//глава 6.1
 #include <iostream>
+
+class Igrok {
+public:
+	enum E {
+		ZDOROVE,
+		FAKEL,
+		STRELA,
+		LENGTH
+	};
+private:
+	int m_array[LENGTH];
+
+public:
+	Igrok() {
+		m_array[ZDOROVE] = 100;
+		m_array[FAKEL] = 100;
+		m_array[STRELA] = 100;
+	}
+	Igrok(int zdorove, int fakel, int strela) {
+		fun(zdorove, fakel, strela);
+	}
+	void fun(int zdorove, int fakel, int strela) {
+		m_array[ZDOROVE] = zdorove;
+		m_array[FAKEL] = fakel;
+		m_array[STRELA] = strela;
+	}
+	friend int countTotalItems(const Igrok igrok);
+};
+
+int countTotalItems(const Igrok igrok)
+{
+	int sum = 0;
+	for (int i = 0; i < Igrok::LENGTH; ++i)
+		sum += igrok.m_array[i];
+	
+	return sum;
+}
 
 int main()
 {
-	setlocale(0, "");
-	std::string arr[]{ "Sasha","Ivan","John","Orlando","Leonardo","Nina","Anton","Molly" };
-	std::string str;
-	std::cout << "Введите имя : ";
-	std::cin >> str;
-
-	bool flag = false;
-	for (auto& s : arr)
-		if (str == s)
-			flag = true;
-
-	if (flag)
-		std::cout << "Такое имя есть в списке";
-	else
-		std::cout << "Такого имени нет в списке";
-		
+	Igrok igrok(4, 4, 4);
+	igrok.fun(3, 6, 12);
+	std::cout << "sum : " << countTotalItems(igrok);
 	return 0;
 }
 
 /*
-Объявите фиксированный массив со следующими именами: Sasha, Ivan, John, Orlando, Leonardo, Nina, Anton и Molly. 
-Попросите пользователя ввести имя. 
-Используйте цикл foreach для проверки того, не находится ли имя, введенное пользователем, уже в массиве.
-
-Пример результата выполнения программы:
-
-Enter a name: Sasha
-Sasha was found.
-
-Enter a name: Maruna
-Maruna was not found.
-
-Подсказка: Используйте std::string в качестве типа массива.
+Представьте, что вы пишете игру, в которой игрок может иметь 3 типа предметов: зелья здоровья, факелы и стрелы. 
+Создайте перечисление с этими типами предметов и фиксированный массив для хранения количества каждого типа предметов, 
+которое имеет при себе игрок (используйте стандартные фиксированные массивы, а не std::array). 
+У вашего игрока должны быть при себе 3 зелья здоровья, 6 факелов и 12 стрел. Напишите функцию countTotalItems(), 
+которая возвращает общее количество предметов, которые есть у игрока. 
+В функции main() выведите результат работы функции countTotalItems().
 */
