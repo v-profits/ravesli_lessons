@@ -1,23 +1,24 @@
-﻿//глава 6.4
+﻿//глава 6.5a
 #include <iostream>
 
-void fun(const char* ch)
-{
-	for (; *ch != '\0'; ++ch)
-		std::cout << *ch;
-}
 int main()
 {
-	char ch[] = "Hello, world!";
-	fun(ch);
-	return 0;
+    int array[6]{ 0, 2, 4, 7, 9 };
+    for (int count = 0; count < 6; ++count)
+        std::cout << array[count] << " ";
+
+    return 0;
 }
 
 /*
-Напишите функцию для вывода строки C-style символ за символом. 
-Используйте указатель для перехода и вывода каждого символа поочерёдно. 
-Остановите вывод при столкновении с нуль-терминатором. 
-В функции main() протестируйте строку Hello, world!.
+* int main()
+{
+    int array[6]{ 0, 2, 4, 7, 9 };
+    for (int count = 0; count <= 6; ++count)
+        std::cout << array[count] << " ";
 
-Подсказка: Используйте оператор ++ для перевода указателя на следующий символ.
+    return 0;
+}
+
+Что не так с фрагментом кода, и как бы вы их исправили?
 */
