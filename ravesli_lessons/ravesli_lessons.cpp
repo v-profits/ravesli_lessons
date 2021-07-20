@@ -1,21 +1,33 @@
-﻿//глава 6.5a
+﻿//глава 6.5б
 #include <iostream>
 
 int main()
 {
-    int array[6]{ 0, 2, 4, 7, 9 };
-    for (int count = 0; count < 6; ++count)
-        std::cout << array[count] << " ";
+    int a = 4;
+    int b = 6;
+
+    const int* ptr = &a;
+    std::cout << *ptr;
+    a = 7;
+    std::cout << *ptr;
+    ptr = &b;
+    std::cout << *ptr;
 
     return 0;
 }
 
 /*
-* int main()
+int main()
 {
-    int array[6]{ 0, 2, 4, 7, 9 };
-    for (int count = 0; count <= 6; ++count)
-        std::cout << array[count] << " ";
+    int a = 4;
+    int b = 6;
+
+    const int *ptr = &a;
+    std::cout << *ptr;
+    *ptr = 7;
+    std::cout << *ptr;
+    ptr = &b;
+    std::cout << *ptr;
 
     return 0;
 }
