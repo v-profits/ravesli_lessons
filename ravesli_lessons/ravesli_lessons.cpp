@@ -1,31 +1,28 @@
-﻿//глава 6.5c
+﻿//глава 6.6a - карточная игра
 #include <iostream>
 
-void printArray(int array[], int length) {
-	for (int i = 0; i < length; ++i)
-        std::cout << array[i] << ' ';
-}
+enum Karta {
+	K_2, K_3, K_4, K_5, K_6, K_7, K_8, K_9, K_10,
+	VALET, DAMA, KOROL, TUZ, MAX = 13
+
+};
+enum Mast {
+	TREF, BUBNY, CHERVY, PIKY, MAX = 4
+};
 
 int main()
 {
-    int array[]{ 8, 6, 4, 2, 0 };
-	int length = sizeof(array) / sizeof(array[0]);
-	printArray(array, length);
-    return 0;
-}
 
-/*
-void printArray(int array[]) {
-	for (const int &element : array)
-		std::cout << element << ' ';
-}
-
-int main()
-{
-	int array[] { 8, 6, 4, 2, 0 };
-	printArray(array);
 	return 0;
 }
 
-Что не так с фрагментом кода, и как бы вы их исправили?
+/*
+Предположим, что мы хотим написать карточную игру.
+
+a) В колоде карт находятся 52 уникальные карты: 
+13 достоинств (2, 3, 4, 5, 6, 7, 8, 9, 10, Валет, Дама, Король, Туз) 
+и 4 масти (трефы, бубны, червы, пики). 
+Создайте два перечисления: первое для масти, второе для достоинств карт.
+
+Подсказка: Добавьте в каждое перечисление еще по одному элементу, который будет обозначать длину этого перечисления.
 */
