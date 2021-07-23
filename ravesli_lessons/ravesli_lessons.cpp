@@ -1,4 +1,4 @@
-﻿//глава 6.6e - карточная игра
+﻿//глава 6.6f - карточная игра
 #include <iostream>
 #include <array>
 
@@ -43,6 +43,11 @@ void printArr(const std::array<Card, 52>& arr) { // перебор всех ка
 		std::cout << std::endl;
 	}
 }
+void swapCard(Card& card1, Card& card2) {
+	Card card = card1;
+	card1 = card2;
+	card2 = card;
+}
 int main()
 {
 	std::array<Card,52>arr; // создаем колоду карт
@@ -53,11 +58,16 @@ int main()
 			++k;
 		}
 	printArr(arr); // выводим колоду карт в консоль
+	//std::cout << std::endl;
+	//printCard(arr[0]); std::cout << std::endl;
+	//printCard(arr[51]); std::cout << std::endl;
+	swapCard(arr[0], arr[51]);
+	//printCard(arr[0]); std::cout << std::endl;
+	//printCard(arr[51]); std::cout << std::endl;
 	return 0; 
 }
 
 /*
-е) Напишите функцию printDeck(), 
-которая в качестве параметра принимает константную ссылку на массив deck и выводит все значения (карты). 
-Используйте цикл foreach.
+f) Напишите функцию swapCard(), 
+которая принимает две карты и меняет местами их значения.
 */
